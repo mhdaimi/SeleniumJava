@@ -80,7 +80,6 @@ public class WebTableEx {
 			
 		}
 		
-		//driver.quit();
 	}
 
 }
