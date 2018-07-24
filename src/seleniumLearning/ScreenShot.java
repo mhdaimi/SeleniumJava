@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -22,11 +23,16 @@ public class ScreenShot {
 		driver.manage().window().maximize();
 		
 		driver.get("http://www.seleniumeasy.com/test/bootstrap-modal-demo.html");
-		
+
 		TakesScreenshot ss = ((TakesScreenshot)driver);
 		File screenShot = ss.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenShot, new File(".\\src\\seleniumLearning\\screenShot.jpg"));
+		
+		driver.get("https://indi.com/");
+
+		TakesScreenshot tst = ((TakesScreenshot)driver);
+		File screeshot1 = tst.getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(screeshot1, new File("C:\\Users\\mohammad.daimi\\testcopy.jpg"));
 
 	}
-
 }
