@@ -2,15 +2,20 @@ package ExcelReadWrite;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import org.apache.poi.ss.usermodel.Row;
-
 public class ExcelCommunication {
+	
+	static File xlfile1 = new File (".\\SeleniumJava\\src\\ExcelReadWrite\\Scenarios.xlsx");
+	static XSSFWorkbook objWorkbook;
+	static XSSFSheet objWorksheet;
+	static FileInputStream xlinputfile ;
+	static FileOutputStream xlOutputfile ;
 /*	
 	ExcelReadWrite(){
 		
@@ -18,19 +23,38 @@ public class ExcelCommunication {
 	
 	public static void main(String[] args) throws IOException{
 		
-		ReadExcel();
+//		ReadExcel();
+		WritExcel();
+		
+	}
+	
+	public static void WritExcel() throws IOException{
+		
+		xlinputfile = new FileInputStream(xlfile1);
+		xlOutputfile = new FileOutputStream(xlfile1);
+		
+		objWorkbook = new XSSFWorkbook(xlinputfile);
+		objWorksheet = objWorkbook.getSheet("Scenarios");
+		//XSSFRow rowNum = objWorksheet.getRow(0);
+		objWorksheet.getRow(0).createCell(4).setCellValue("Result");
+		
+		objWorkbook.write(xlOutputfile);
+		objWorkbook.close();
+		
+		
+		
+		
 		
 	}
 	
 	public static void ReadExcel() throws IOException{
 		
-		File xlfile1 = new File (".\\src\\ExcelReadWrite\\Scenarios.xlsx");
+		xlinputfile = new FileInputStream(xlfile1);
 		
-		FileInputStream xlinputfile = new FileInputStream(xlfile1);
-		//FileOutputStream xloutputfile = new FileOutputStream(xlfile1);
+		
 	
-		XSSFWorkbook objWorkbook = new XSSFWorkbook(xlinputfile);
-		XSSFSheet objWorksheet = objWorkbook.getSheet("Scenarios");
+		objWorkbook = new XSSFWorkbook(xlinputfile);
+		objWorksheet = objWorkbook.getSheet("Scenarios");
 		
 		int maximumRows = objWorksheet.getLastRowNum();
 		
