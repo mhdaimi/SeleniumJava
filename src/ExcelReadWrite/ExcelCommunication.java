@@ -24,23 +24,27 @@ public class ExcelCommunication {
 	
 	public static void ReadExcel() throws IOException{
 		
-		File xlfile1 = new File (".\\src\\ExcelReadWrite\\Scenarios.xls");
+		File xlfile1 = new File (".\\src\\ExcelReadWrite\\Scenarios.xlsx");
 		
 		FileInputStream xlinputfile = new FileInputStream(xlfile1);
 		//FileOutputStream xloutputfile = new FileOutputStream(xlfile1);
 	
 		XSSFWorkbook objWorkbook = new XSSFWorkbook(xlinputfile);
-		XSSFSheet objWorksheet = objWorkbook.getSheet("Sheet1");
+		XSSFSheet objWorksheet = objWorkbook.getSheet("Scenarios");
 		
 		int maximumRows = objWorksheet.getLastRowNum();
 		
-		for(int i = 0; i < maximumRows; i++){
+		for(int i = 0; i <= maximumRows; i++){
 			XSSFRow row = objWorksheet.getRow(i);
 			
 			int columns = row.getLastCellNum();
 			
 			System.out.println("Row Number: " + i + " has " + columns + " columns") ;
 		}
+		
+		objWorkbook.close();
 	}
+	
+	
 	
 }
