@@ -11,7 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelCommunication {
 	
-	static File xlfile1 = new File (".\\SeleniumJava\\src\\ExcelReadWrite\\Scenarios.xlsx");
+	static File xlfile1 = new File (".\\src\\ExcelReadWrite\\Scenarios.xlsx");
 	static XSSFWorkbook objWorkbook;
 	static XSSFSheet objWorksheet;
 	static FileInputStream xlinputfile ;
@@ -21,54 +21,38 @@ public class ExcelCommunication {
 		
 	}*/
 	
-	public static void main(String[] args) throws IOException{
-		
+/*	public static void main(String[] args) throws IOException{
 //		ReadExcel();
 		WritExcel();
-		
 	}
-	
+	*/
 	public static void WritExcel() throws IOException{
-		
 		xlinputfile = new FileInputStream(xlfile1);
-		xlOutputfile = new FileOutputStream(xlfile1);
 		
 		objWorkbook = new XSSFWorkbook(xlinputfile);
 		objWorksheet = objWorkbook.getSheet("Scenarios");
-		//XSSFRow rowNum = objWorksheet.getRow(0);
-		objWorksheet.getRow(0).createCell(4).setCellValue("Result");
+		objWorksheet.getRow(0).createCell(3).setCellValue("Result");
 		
+		xlOutputfile = new FileOutputStream(xlfile1);
 		objWorkbook.write(xlOutputfile);
 		objWorkbook.close();
-		
-		
-		
-		
-		
 	}
 	
-	public static void ReadExcel() throws IOException{
-		
+	public static String ReadExcel(String sheetName, int row, int cellnum) throws IOException{
 		xlinputfile = new FileInputStream(xlfile1);
-		
-		
 	
 		objWorkbook = new XSSFWorkbook(xlinputfile);
 		objWorksheet = objWorkbook.getSheet("Scenarios");
 		
-		int maximumRows = objWorksheet.getLastRowNum();
+		return objWorksheet.getRow(row).getCell(cellnum).getStringCellValue();
+		
+/*		int maximumRows = objWorksheet.getLastRowNum();
 		
 		for(int i = 0; i <= maximumRows; i++){
 			XSSFRow row = objWorksheet.getRow(i);
-			
 			int columns = row.getLastCellNum();
-			
 			System.out.println("Row Number: " + i + " has " + columns + " columns") ;
-		}
-		
-		objWorkbook.close();
+		}*/
+		//objWorkbook.close();
 	}
-	
-	
-	
 }
