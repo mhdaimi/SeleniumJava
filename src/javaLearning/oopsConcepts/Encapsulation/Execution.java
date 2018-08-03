@@ -1,6 +1,6 @@
-package javaLearning.oopsConcepts;
+package javaLearning.oopsConcepts.Encapsulation;
 
-public class EncapsulationExExecutor {
+public class Execution {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

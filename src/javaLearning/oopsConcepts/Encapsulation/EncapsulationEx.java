@@ -1,4 +1,4 @@
-package javaLearning.oopsConcepts;
+package javaLearning.oopsConcepts.Encapsulation;
 
 public class EncapsulationEx {
 	

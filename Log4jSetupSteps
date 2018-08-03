@@ -1,0 +1,6 @@
+Log4j setup
+
+1. Download log4j jar from: https://logging.apache.org/log4j/2.x/download.html
+2. To Build Path, add paths of log4j-1.2-api-2.11.1, log4j-api-2.11.1 and log4j-core-2.11.1
+3. create log4j.properties file
+4. create object of Logger and pass value "devpinoyLogger" to its constructor

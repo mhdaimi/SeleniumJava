@@ -27,6 +27,9 @@ public class DropdownEx {
 		Select obj = new Select(dropDown);
 		
 		obj.selectByValue("3");
+		
+		
+		driver.findElement(By.name("toMonth")).sendKeys("October");
 
 	}
 
